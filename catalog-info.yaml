@@ -1,0 +1,48 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: evanshortiss-poi-map-app-dev
+  annotations:
+    argocd/app-name: evanshortiss-poi-map-app-dev
+    backstage.io/kubernetes-id: evanshortiss-poi-map-app-dev
+    backstage.io/kubernetes-namespace: evanshortiss
+    backstage.io/kubernetes-label-selector: 'app.kubernetes.io/instance=evanshortiss-poi-map-app-dev'
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: Summit23JanusN/evanshortiss-frontend
+  tags:
+    - typescript
+    - angular
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.summit23bis.17gd.p1.openshiftapps.com/dev-pipelines/ns/evanshortiss/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.summit23bis.17gd.p1.openshiftapps.com/k8s/ns/evanshortiss/deployments/poi-map-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.summit23bis.17gd.p1.openshiftapps.com/#https://github.com/Summit23JanusN/evanshortiss-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: http://poi-map-app-evanshortiss.apps.summit23bis.17gd.p1.openshiftapps.com
+      title: Map
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:evanshortiss"
+  system: workshop-system-evanshortiss
+  consumesApis:
+    - gateway-api-evanshortiss
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-evanshortiss
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "user:evanshortiss"
